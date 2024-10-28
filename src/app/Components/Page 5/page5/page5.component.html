@@ -1,0 +1,55 @@
+<form [formGroup]="uploadForm" class="Formcontainer">
+  <!-- Photo Upload -->
+  <mat-card class="form-section">
+    <mat-card-content>
+      <label>Photo <span style="color: red;">*</span></label>
+      <input style="margin-left: 5px;" type="file" (change)="onFileChange($event, 'photo')" accept="image/jpeg,image/png" required />
+      <small class="file-info">Upload jpg/jpeg/png, max 5MB</small>
+      <div *ngIf="uploadForm.get('photo')?.invalid && (uploadForm.get('photo')?.touched || uploadForm.get('photo')?.dirty)">
+        <small style="color: red;">Photo is required.</small>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Cover Message -->
+<mat-card class="form-section">
+  <mat-card-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Cover message </mat-label>
+      <textarea matInput formControlName="coverMessage" rows="4" required></textarea>
+      <mat-error *ngIf="uploadForm.get('coverMessage')?.hasError('required') && (uploadForm.get('coverMessage')?.touched || uploadForm.get('coverMessage')?.dirty)">
+        Cover message is required.
+      </mat-error>
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>
+
+
+  <!-- CV/Resume Upload -->
+  <mat-card class="form-section">
+    <mat-card-content>
+      <label>CV/Resume <span style="color: red;">*</span></label>
+      <input style="margin-left: 5px;" type="file" (change)="onFileChange($event, 'resume')" accept=".pdf,.doc,.docx" required />
+      <small class="file-info">Upload pdf, word, max 10MB</small>
+      <div *ngIf="uploadForm.get('resume')?.invalid && (uploadForm.get('resume')?.touched || uploadForm.get('resume')?.dirty)">
+        <small style="color: red;">Resume is required.</small>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</form>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <button type="submit" class="btn btn-primary" (click)="back()">
+        Back
+      </button>
+    </div>
+    
+    <div class="col-sm-6">
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="uploadForm.invalid || isSubmitting"  >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,171 @@
+<div class="mat-elevation-z8">
+    <mat-form-field appearance="fill">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filter sessions">
+    </mat-form-field>
+
+    <div class="table-container">
+  
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+      <ng-container matColumnDef="devId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Developer Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.devId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="devName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.devName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="devEmail">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.devEmail}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="devPhone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+        <td mat-cell *matCellDef="let element"> {{element.devPhone}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="devLinkedIn">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> LinkedIn </th>
+        <td mat-cell *matCellDef="let element"> {{element.devLinkedIn}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="devCountry">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Country </th>
+        <td mat-cell *matCellDef="let element"> {{element.devCountry}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="devCity">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
+        <td mat-cell *matCellDef="let element"> {{element.devCity}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currentJobRole">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Current Job Role </th>
+        <td mat-cell *matCellDef="let element"> {{element.currentJobRole}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currentCompanyName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Current Company </th>
+        <td mat-cell *matCellDef="let element"> {{element.currentCompanyName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currentJobType">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Current Job Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.currentJobType}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currentWorkingType">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Current Working Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.currentWorkingType}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currentWorkingLocation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Current Working Location </th>
+        <td mat-cell *matCellDef="let element"> {{element.currentWorkingLocation}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currentJobStartDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Job Start Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.currentJobStartDate | date}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currentJobEndDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Job End Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.currentJobEndDate | date}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currentJobAvailability">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Availability </th>
+        <td mat-cell *matCellDef="let element"> {{element.currentJobAvailability}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="previousJobRole">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Previous Job Role </th>
+        <td mat-cell *matCellDef="let element"> {{element.previousJobRole}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="previousCompanyName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Previous Company </th>
+        <td mat-cell *matCellDef="let element"> {{element.previousCompanyName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="previousJobType">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Previous Job Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.previousJobType}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="previousWorkingType">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Previous Working Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.previousWorkingType}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="previousWorkingLocation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Previous Working Location </th>
+        <td mat-cell *matCellDef="let element"> {{element.previousWorkingLocation}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="previousJobStartDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Previous Job Start Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.previousJobStartDate | date}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="previousJobEndDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Previous Job End Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.previousJobEndDate | date}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="expectedJobRole">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Expected Job Role </th>
+        <td mat-cell *matCellDef="let element"> {{element.expectedJobRole}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="expectedJobType">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Expected Job Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.expectedJobType}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="expectedWorkingType">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Expected Working Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.expectedWorkingType}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="expectedWorkingLocation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Expected Working Location </th>
+        <td mat-cell *matCellDef="let element"> {{element.expectedWorkingLocation}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="coverMessage">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cover Message </th>
+        <td mat-cell *matCellDef="let element"> {{element.coverMessage}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="photoPath">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Photo </th>
+        <td mat-cell *matCellDef="let element">
+          <a href="{{ element.photoDownloadUrl }}" target="_blank" download>
+            Download Photo
+          </a>
+        </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="resumePath">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Resume </th>
+        <td mat-cell *matCellDef="let element">
+          <a href="{{ element.resumeDownloadUrl }}" target="_blank" download>
+            Download Resume
+          </a>
+        </td>
+      </ng-container>
+      
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

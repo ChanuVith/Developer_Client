@@ -1,0 +1,106 @@
+
+<mat-card class="container">
+    <mat-card-content>
+        <form #registrationForm="ngForm">
+            <mat-form-field appearance="fill">
+                <mat-label>Full Name</mat-label>
+                <input matInput name="name" [(ngModel)]="name" required pattern="^[a-zA-Z\s]*$" />
+                <mat-error *ngIf="registrationForm.controls['name']?.invalid && registrationForm.controls['name']?.touched">
+                    <ng-container *ngIf="registrationForm.controls['name']?.errors?.['required']">
+                        Name is required.
+                    </ng-container>
+                    <ng-container *ngIf="registrationForm.controls['name']?.errors?.['pattern']">
+                        Only letters are allowed (numbers are not permitted).
+                    </ng-container>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput name="email" [(ngModel)]="email" required email />
+                <mat-error *ngIf="registrationForm.controls['email']?.invalid && registrationForm.controls['email']?.touched">
+                    A valid email is required.
+                </mat-error>
+            </mat-form-field>
+
+            <div class="phone-number-field">
+                <mat-form-field appearance="fill" class="country-code-field">
+                    <mat-label>Country Code</mat-label>
+                    <mat-select name="countryCode" [(ngModel)]="selectedCountryCode" required>
+                        <mat-option *ngFor="let code of countryCodes" [value]="code.callingCodes[0]">
+                            <div class="country-option">
+                                <img [src]="code.flag" class="flag" alt="{{ code.name }} flag" />
+                                {{ code.name }} (+{{ code.callingCodes[0] }})
+                            </div>
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="registrationForm.controls['countryCode']?.invalid && registrationForm.controls['countryCode']?.touched">
+                        Country code is required.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput name="phone" [(ngModel)]="phone" required pattern="^\d{10,15}$" />
+                    <mat-error *ngIf="registrationForm.controls['phone']?.invalid && registrationForm.controls['phone']?.touched">
+                        <ng-container *ngIf="registrationForm.controls['phone']?.errors?.['required']">
+                            Phone number is required.
+                        </ng-container>
+                        <ng-container *ngIf="registrationForm.controls['phone']?.errors?.['pattern']">
+                            Must be between 10 and 15 digits (only numbers are allowed).
+                        </ng-container>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="fill">
+                <mat-label>LinkedIn URL</mat-label>
+                <input matInput name="linkedIn" [(ngModel)]="linkedIn" required pattern="^(https?:\/\/)?(www\.)?linkedin\.com\/.*$" />
+                <mat-error *ngIf="registrationForm.controls['linkedIn']?.invalid && registrationForm.controls['linkedIn']?.touched">
+                    <ng-container *ngIf="registrationForm.controls['linkedIn']?.errors?.['required']">
+                        LinkedIn URL is required.
+                    </ng-container>
+                    <ng-container *ngIf="registrationForm.controls['linkedIn']?.errors?.['pattern']">
+                        Please enter a valid LinkedIn URL.
+                    </ng-container>
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Horizontal Fields Wrapper -->
+            <div class="horizontal-fields">
+                <mat-form-field appearance="fill">
+                    <mat-label>Residing Country</mat-label>
+                    <mat-select name="country" [(ngModel)]="selectedCountry" (selectionChange)="onCountryChange()" required>
+                        <mat-option *ngFor="let country of countries" [value]="country.name">
+                            {{ country.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="registrationForm.controls['country']?.invalid && registrationForm.controls['country']?.touched">
+                        Country is required.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>City</mat-label>
+                    <mat-select name="city" [(ngModel)]="selectedCity" required>
+                        <mat-option *ngFor="let city of cities" [value]="city">
+                            {{ city }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="registrationForm.controls['city']?.invalid && registrationForm.controls['city']?.touched">
+                        City is required.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            
+        </form>
+    </mat-card-content>
+</mat-card>
+
+<div class="container fluid">
+    <button class="btn btn-primary custom-btn" 
+        (click)="onSubmit(registrationForm)" 
+        [disabled]="registrationForm.invalid || isSubmitting">
+        Next
+    </button>
+</div>

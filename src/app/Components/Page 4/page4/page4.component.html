@@ -1,0 +1,62 @@
+
+<form [formGroup]="jobForm" class="Formcontainer">
+  <mat-form-field appearance="fill">
+    <mat-label>Expected Job Role(s)</mat-label>
+    <mat-select formControlName="roles" multiple>
+      <mat-option *ngFor="let role of jobRoles" [value]="role">{{ role }}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="jobForm.controls['roles']?.invalid && jobForm.controls['roles']?.touched">
+      Expected Job Role is required.
+  </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Expected Job Type</mat-label>
+    <mat-select formControlName="jobType" multiple>
+      <mat-option *ngFor="let type of jobTypes" [value]="type">{{ type }}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="jobForm.controls['jobType']?.invalid && jobForm.controls['jobType']?.touched">
+      Expected Job type is required.
+  </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Expected Working Type</mat-label>
+    <mat-select formControlName="workingType" multiple>
+      <mat-option *ngFor="let workingType of workingTypes" [value]="workingType">
+        {{ workingType }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="jobForm.controls['workingType']?.invalid && jobForm.controls['workingType']?.touched">
+      Expected Working type is required.
+  </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Expected Working Location</mat-label>
+    <mat-select formControlName="location" multiple>
+      <mat-option *ngFor="let location of locations" [value]="location.name">{{ location.name }}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="jobForm.controls['location']?.invalid && jobForm.controls['location']?.touched">
+      Expected working location is required.
+  </mat-error>
+  </mat-form-field>
+
+</form>
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <button type="submit" class="btn btn-primary" (click)="back()">
+          Back
+        </button>
+      </div>
+      
+      <div class="col-sm-6">
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="jobForm.invalid || isSubmitting"  >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>

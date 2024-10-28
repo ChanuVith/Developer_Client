@@ -1,0 +1,48 @@
+// .mat-elevation-z8 {
+//     border-radius: 8px;
+//     background-color: #f9f9f9; /* Light background for contrast */
+//     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+//   }
+  
+//   .mat-form-field {
+//     width: 100%;
+//     margin-bottom: 20px; /* Spacing below the input field */
+//   }
+  
+//   table {
+//     width: 100%;
+//     border-collapse: collapse; /* Ensures borders are neatly joined */
+//   }
+  
+//   th.mat-header-cell {
+//     background-color: #6200ea; /* Primary theme color */
+//     color: white; /* Text color for header */
+//     font-weight: bold; /* Bolder text */
+//     text-align: left; /* Align text to the left */
+//   }
+  
+//   td.mat-cell {
+//     padding: 16px; /* Spacing inside table cells */
+//     border-bottom: 1px solid #e0e0e0; /* Light border between rows */
+//   }
+  
+//   tr.mat-row:hover {
+//     background-color: rgba(98, 0, 234, 0.1); /* Highlight row on hover */
+//   }
+  
+//   .mat-paginator {
+//     margin-top: 20px; /* Spacing above paginator */
+//   }
+  
+//   .mat-sort-header {
+//     cursor: pointer; /* Indicate that headers are sortable */
+//   }
+  
+//   .mat-sort-header-sorted {
+//     color: #ff9800; /* Color for sorted header */
+//   }
+  
+  .table-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+  }
+  
